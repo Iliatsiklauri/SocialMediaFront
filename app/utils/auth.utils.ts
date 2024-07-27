@@ -1,8 +1,9 @@
+import { logIn, signup } from '../api/auth/auth.api';
 import { loginType, signUpType } from '../types/authentication/auth.types';
 
 export const onSignUp = (data: signUpType) => {
-  console.log(data);
+  signup(data);
 };
 export const onSignIn = (data: loginType) => {
-  console.log(data);
+  logIn(data);
 };
