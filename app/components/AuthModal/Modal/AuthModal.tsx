@@ -3,17 +3,23 @@ import React, { useState } from 'react';
 import ChangeAuthButton from '../ChangeAuthButton/ChangeAuthButton';
 import SignInInputs from '../SignInInputs/SignInInputs';
 import SignUpInputs from '../SignUpInputs/SignUpInputs';
+import SubmitButton from '../SubmitButton/SubmitButton';
 
 export default function AuthModal() {
   const [auth, setAuth] = useState(false);
   return (
     <div
-      className={`w-[400px] ${
-        auth ? 'h-[380px]' : 'h-[530px]'
-      } bg-slate-600 rounded-2xl border-2 border-black p-10 py-32 flex items-start justify-center relative transition-all duration-300 left-0 ease-in-out `}
+      className={`w-[400px] flex-shrink-0 ${
+        auth ? 'h-[380px]' : 'h-[624px]'
+      } bg-white rounded-2xl shadow-slate-400 shadow-sm p-8 pt-28
+       flex items-center justify-start gap-6 relative transition-all duration-150 ease-in-out flex-col `}
     >
       <ChangeAuthButton auth={auth} setAuth={setAuth} />
-      {auth ? <SignInInputs /> : <SignUpInputs />}
+      {auth ? (
+        <SignInInputs auth={auth} setAuth={setAuth} />
+      ) : (
+        <SignUpInputs auth={auth} setAuth={setAuth} />
+      )}
     </div>
   );
 }

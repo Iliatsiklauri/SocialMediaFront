@@ -5,6 +5,7 @@ export type signUpType = {
   lastname: string;
   email: string;
   password: string;
+  confirm_password: string;
 };
 export type loginType = {
   email: string;
@@ -21,8 +22,15 @@ export const logInSchema = yup.object().shape({
 });
 
 export const SignUpSchema = yup.object().shape({
-  email: yup.string().required().email('/^[^s@]+@[^s@]+.[^s@]+$/'),
-  password: yup.string().min(8).required(),
+  email: yup
+    .string()
+    .required()
+    .matches(/^\S+@\S+\.\S+$/, 'Enter a valid email address'),
+  password: yup.string().required().min(8),
+  confirm_password: yup
+    .string()
+    .oneOf([yup.ref('password')], 'Passwords must match')
+    .required('Confirm password is required'),
   name: yup.string().required(),
   lastname: yup.string().required(),
 });

@@ -1,27 +1,28 @@
 import { changeAuthButton } from '@/app/types/authentication/auth.types';
 import React from 'react';
+import SubmitButton from '../SubmitButton/SubmitButton';
 
 export default function ChangeAuthButton({ auth, setAuth }: changeAuthButton) {
   return (
-    <div className="w-[90%] h-[50px] flex items-center justify-around cursor-pointer absolute top-10">
-      <div className="flex w-full h-full items-center justify-around relative">
+    <div className="w-full h-[50px] flex absolute top-10 px-8">
+      <div className="flex w-full h-full items-center justify-around relative bg-slate-200 rounded-2xl">
         <div
           className={`${
-            auth ? '' : ''
-          } w-1/3 h-full flex items-center justify-center z-10`}
+            auth ? 'text-white' : 'text-black'
+          } w-1/3 h-full flex items-center justify-center z-10 transition-all duration-200 cursor-pointer`}
           onClick={() => setAuth(true)}
         >
           Login
         </div>
         <div
-          className={`w-1/2 h-full absolute bg-slate-200 z-0 rounded-xl transition-transform duration-300 left-0 ease-in-out ${
-            auth ? 'translate-x-0' : 'translate-x-[98%]'
+          className={`w-1/2 h-full absolute bg-blue-600 z-0 rounded-2xl transition-transform duration-200 left-0 ease-in-out ${
+            auth ? 'translate-x-0' : 'translate-x-[100%]'
           }`}
         ></div>
         <div
           className={`${
-            auth ? '' : ''
-          } w-1/3 h-full flex items-center justify-center z-10 cursor-pointer`}
+            !auth ? 'text-white' : 'text-black'
+          } w-1/3 h-full flex items-center justify-center z-10 cursor-pointer transition-all duration-200`}
           onClick={() => setAuth(false)}
         >
           Register
