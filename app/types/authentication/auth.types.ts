@@ -1,3 +1,4 @@
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import * as yup from 'yup';
 
 export type signUpType = {

@@ -1,4 +1,5 @@
 import { loginType, signUpType } from '@/app/types/authentication/auth.types';
+import { setCookie } from 'cookies-next';
 import { babelIncludeRegexes } from 'next/dist/build/webpack-config';
 
 const SIGN_UP_URL = 'http://localhost:4000/auth/sign-up';
@@ -16,9 +17,9 @@ export async function signup(signUpType: signUpType) {
 
     if (!res.ok) {
       let error = await res.json();
-      console.log(error);
       return error;
     }
+
     return 'User registered successfully';
   } catch (er) {
     console.log(`error cought in catch ${er}`);
@@ -38,10 +39,11 @@ export async function logIn(loginType: loginType) {
     const data = await res.json();
 
     if (!res.ok) {
-      console.log(data);
       return data;
     }
-    console.log(data.accessToken);
+
+    setCookie('AccessToken', data.accessToken);
+
     return data.accessToken;
   } catch (er) {
     console.log(er);

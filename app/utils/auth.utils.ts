@@ -1,9 +1,15 @@
-import { logIn, signup } from '../api/auth/auth.api';
-import { loginType, signUpType } from '../types/authentication/auth.types';
+import { getCookie, setCookie } from 'cookies-next';
+import { redirect } from 'next/navigation';
 
-export const onSignUp = (data: signUpType) => {
-  signup(data);
-};
-export const onSignIn = (data: loginType) => {
-  logIn(data);
-};
+export const inputs = [
+  'email',
+  'password',
+  'confirm_password',
+  'name',
+  'lastname',
+];
+
+export function checkQookie() {
+  const cookie = getCookie('AccessToken');
+  if (!cookie) redirect('/auth');
+}
