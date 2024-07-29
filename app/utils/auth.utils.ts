@@ -1,4 +1,4 @@
-import { getCookie, setCookie } from 'cookies-next';
+import { hasCookie } from 'cookies-next';
 import { redirect } from 'next/navigation';
 
 export const inputs = [
@@ -10,6 +10,8 @@ export const inputs = [
 ];
 
 export function checkQookie() {
-  const cookie = getCookie('AccessToken');
-  if (!cookie) redirect('/auth');
+  const cookie = hasCookie('AccessToken');
+  if (!cookie) {
+    redirect('/');
+  }
 }

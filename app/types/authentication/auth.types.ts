@@ -1,6 +1,11 @@
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import * as yup from 'yup';
-
+export type AuthSignUp = {
+  name: string;
+  lastname: string;
+  email: string;
+  password: string;
+};
 export type signUpType = {
   name: string;
   lastname: string;
@@ -15,6 +20,12 @@ export type loginType = {
 export type changeAuthButton = {
   auth: boolean;
   setAuth: React.Dispatch<React.SetStateAction<boolean>>;
+};
+export type customSignUp = {
+  auth: boolean;
+  setAuth: React.Dispatch<React.SetStateAction<boolean>>;
+  setEmail: React.Dispatch<React.SetStateAction<string | null>>;
+  email?: string | null;
 };
 
 export const logInSchema = yup.object().shape({

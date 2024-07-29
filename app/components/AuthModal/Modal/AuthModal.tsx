@@ -1,9 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import ChangeAuthButton from '../ChangeAuthButton/ChangeAuthButton';
-import SignInInputs from '../SignInInputs/SignInInputs';
-import SignUpInputs from '../SignUpInputs/SignUpInputs';
 import SubmitButton from '../SubmitButton/SubmitButton';
+import InputsForAuth from '../InputsForAuth/InputsForAuth';
 
 export default function AuthModal() {
   const [auth, setAuth] = useState(false);
@@ -15,11 +14,7 @@ export default function AuthModal() {
        flex items-center justify-start gap-6 relative transition-all duration-150 ease-in-out flex-col `}
     >
       <ChangeAuthButton auth={auth} setAuth={setAuth} />
-      {auth ? (
-        <SignInInputs auth={auth} setAuth={setAuth} />
-      ) : (
-        <SignUpInputs auth={auth} setAuth={setAuth} />
-      )}
+      <InputsForAuth auth={auth} setAuth={setAuth} />
     </div>
   );
 }

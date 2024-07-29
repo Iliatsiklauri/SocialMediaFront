@@ -1,11 +1,14 @@
-import { loginType, signUpType } from '@/app/types/authentication/auth.types';
+import {
+  AuthSignUp,
+  loginType,
+  signUpType,
+} from '@/app/types/authentication/auth.types';
 import { setCookie } from 'cookies-next';
-import { babelIncludeRegexes } from 'next/dist/build/webpack-config';
 
 const SIGN_UP_URL = 'http://localhost:4000/auth/sign-up';
 const SIGN_IN_URL = 'http://localhost:4000/auth/sign-in';
 
-export async function signup(signUpType: signUpType) {
+export async function signup(signUpType: AuthSignUp) {
   try {
     const res = await fetch(SIGN_UP_URL, {
       method: 'POST',
@@ -15,12 +18,7 @@ export async function signup(signUpType: signUpType) {
       body: JSON.stringify(signUpType),
     });
 
-    if (!res.ok) {
-      let error = await res.json();
-      return error;
-    }
-
-    return 'User registered successfully';
+    return res;
   } catch (er) {
     console.log(`error cought in catch ${er}`);
   }
@@ -36,15 +34,7 @@ export async function logIn(loginType: loginType) {
       body: JSON.stringify(loginType),
     });
 
-    const data = await res.json();
-
-    if (!res.ok) {
-      return data;
-    }
-
-    setCookie('AccessToken', data.accessToken);
-
-    return data.accessToken;
+    return res;
   } catch (er) {
     console.log(er);
   }
