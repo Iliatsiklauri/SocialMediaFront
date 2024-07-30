@@ -27,12 +27,14 @@ export default function LogInInputs({ auth, setAuth, email }: customSignUp) {
     const res = await logIn(data);
     const response = await res?.json();
     if (!res?.ok) {
-      if (response.message === 'incorect password') {
+      if (response.message === 'incorrect password') {
         setPassError(response.message);
+        setEmailError('');
         return;
       }
       if (response.message === 'User does not exist') {
         setEmailError(response.message);
+        setPassError('');
         return;
       }
     }

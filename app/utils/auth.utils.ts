@@ -12,6 +12,6 @@ export const inputs = [
 export function checkQookie() {
   const cookie = hasCookie('AccessToken');
   if (!cookie) {
-    redirect('/');
+    redirect('/auth');
   }
 }

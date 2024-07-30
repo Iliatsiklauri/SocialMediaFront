@@ -1,6 +1,5 @@
 import { changeAuthButton } from '@/app/types/authentication/auth.types';
 import React from 'react';
-import SubmitButton from '../SubmitButton/SubmitButton';
 
 export default function ChangeAuthButton({ auth, setAuth }: changeAuthButton) {
   return (

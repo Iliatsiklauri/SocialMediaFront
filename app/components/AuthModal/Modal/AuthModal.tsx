@@ -1,7 +1,6 @@
 'use client';
 import React, { useState } from 'react';
 import ChangeAuthButton from '../ChangeAuthButton/ChangeAuthButton';
-import SubmitButton from '../SubmitButton/SubmitButton';
 import InputsForAuth from '../InputsForAuth/InputsForAuth';
 
 export default function AuthModal() {

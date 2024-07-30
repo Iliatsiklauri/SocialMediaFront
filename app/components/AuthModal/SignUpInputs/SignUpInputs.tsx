@@ -1,5 +1,4 @@
 import {
-  changeAuthButton,
   customSignUp,
   SignUpSchema,
   signUpType,
