@@ -14,6 +14,7 @@ export default function Posts() {
     fetchPosts();
   }, []);
   return (
+    //! should improve image optimization
     <div className="w-1/3 flex flex-col items-center justify-center gap-[50px]">
       {posts && posts.length > 0 ? (
         posts?.map((el, key) => (
