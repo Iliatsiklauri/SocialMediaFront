@@ -1,12 +1,12 @@
+import { yupResolver } from '@hookform/resolvers/yup';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import SubmitButton from '../SubmitButton/SubmitButton';
 import {
   customSignUp,
   SignUpSchema,
   signUpType,
 } from '@/app/types/authentication/auth.types';
-import { yupResolver } from '@hookform/resolvers/yup';
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import SubmitButton from '../SubmitButton/SubmitButton';
 import { signup } from '@/app/api/auth/auth.api';
 
 export default function SignUpInputs({

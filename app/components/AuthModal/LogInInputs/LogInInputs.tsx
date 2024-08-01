@@ -1,15 +1,15 @@
+import React, { useState } from 'react';
+import SubmitButton from '../SubmitButton/SubmitButton';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { setCookie } from 'cookies-next';
+import { useRouter } from 'next/navigation';
 import {
   customSignUp,
   logInSchema,
   loginType,
 } from '@/app/types/authentication/auth.types';
-import React, { useState } from 'react';
-import SubmitButton from '../SubmitButton/SubmitButton';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { logIn } from '@/app/api/auth/auth.api';
-import { setCookie } from 'cookies-next';
-import { useRouter } from 'next/navigation';
 
 export default function LogInInputs({ auth, setAuth, email }: customSignUp) {
   const [passError, setPassError] = useState<null | string>(null);
@@ -64,7 +64,7 @@ export default function LogInInputs({ auth, setAuth, email }: customSignUp) {
           {...register('email')}
         />
         <p className="absolute text-red-400 text-[12px] right-0 bottom-[-17px]">
-          {errors.email?.message}
+          {emailError ? null : errors.email?.message}
         </p>
         <p className="absolute text-red-400 text-[12px] right-0 bottom-[-17px]">
           {emailError ? emailError : null}
@@ -82,7 +82,7 @@ export default function LogInInputs({ auth, setAuth, email }: customSignUp) {
           {...register('password')}
         />
         <p className="absolute text-red-400 text-[12px] right-0 bottom-[-17px]">
-          {errors.password?.message}
+          {passError ? null : errors.password?.message}
         </p>
         <p className="absolute text-red-400 text-[12px] right-0 bottom-[-17px]">
           {passError ? passError : null}

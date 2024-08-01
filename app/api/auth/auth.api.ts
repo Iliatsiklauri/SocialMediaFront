@@ -2,7 +2,7 @@ import {
   AuthSignUp,
   loginType,
   signUpType,
-} from '@/app/types/authentication/auth.types';
+} from '../../../app/types/authentication/auth.types';
 import { setCookie } from 'cookies-next';
 
 const SIGN_UP_URL = 'http://localhost:4000/auth/sign-up';

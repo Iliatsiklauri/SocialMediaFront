@@ -1,6 +1,5 @@
-import AuthModal from '@/app/components/AuthModal/Modal/AuthModal';
-import WelcomeText from '@/app/components/WelcomeText/WelcomeText';
-import Image from 'next/image';
+import AuthModal from '../../components/AuthModal/Modal/AuthModal';
+import WelcomeText from '../../components/WelcomeText/WelcomeText';
 
 export default function page() {
   return (
