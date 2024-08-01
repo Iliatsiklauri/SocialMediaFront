@@ -1,5 +1,7 @@
 import { hasCookie } from 'cookies-next';
 import { redirect } from 'next/navigation';
+import { getPostsApi } from '../api/posts/posts.api';
+import { getPostsType } from '../types/posts/posts.type';
 
 export const inputs = [
   'email',
@@ -8,10 +10,3 @@ export const inputs = [
   'name',
   'lastname',
 ];
-
-export function checkQookie() {
-  const cookie = hasCookie('AccessToken');
-  if (!cookie) {
-    redirect('/auth');
-  }
-}

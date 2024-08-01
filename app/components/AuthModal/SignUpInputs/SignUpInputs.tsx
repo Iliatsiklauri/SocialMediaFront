@@ -67,6 +67,7 @@ export default function SignUpInputs({
         <input
           type="password"
           id="Password"
+          autoComplete="off"
           className="Auth_Inputs  border-gray-300 border-[1px]"
           placeholder="**************"
           {...register('password')}
@@ -82,6 +83,7 @@ export default function SignUpInputs({
         <input
           type="password"
           id="Confirm_password"
+          autoComplete="off"
           className="Auth_Inputs  border-gray-300 border-[1px] "
           placeholder="**************"
           {...register('confirm_password')}

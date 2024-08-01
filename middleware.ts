@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  console.log('logged', request.url);
   const isAuthPage = request.url.endsWith('/auth');
   const token = request.cookies.get('AccessToken')?.value;
 
