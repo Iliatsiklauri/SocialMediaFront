@@ -1,9 +1,10 @@
+import { createContext } from 'react';
 import { user } from '../User/user.type';
 
 export type post = {
   author: user;
   content: string;
-  imageUrl: string;
+  filePath: string;
   comments: string[];
   likes: string[];
 };

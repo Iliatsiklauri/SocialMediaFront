@@ -15,14 +15,15 @@ export default function Posts() {
   }, []);
   return (
     <div className="w-1/3 flex flex-col items-center justify-center gap-[50px]">
-      {posts.length > 0 ? (
+      {posts && posts.length > 0 ? (
         posts?.map((el, key) => (
           <SinglePost
             author={el.author}
             comments={el.comments}
             content={el.content}
-            imageUrl={el.imageUrl}
+            filePath={el.filePath}
             likes={el.likes}
+            key={key}
           />
         ))
       ) : (

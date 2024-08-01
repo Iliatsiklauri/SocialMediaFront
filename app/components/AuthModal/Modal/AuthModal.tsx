@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ChangeAuthButton from '../ChangeAuthButton/ChangeAuthButton';
 import InputsForAuth from '../InputsForAuth/InputsForAuth';
 
