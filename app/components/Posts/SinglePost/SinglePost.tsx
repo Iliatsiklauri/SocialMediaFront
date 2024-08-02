@@ -8,6 +8,7 @@ export default function SinglePost(post: post) {
       <p>
         {post.author.name} {post.author.lastname}
       </p>
+      <p>{post?.content}</p>
       {post?.imageUrl !== 'No Image' && (
         <div className="relative w-auto h-[500px]">
           <Image src={post?.imageUrl} alt="post image" fill />
