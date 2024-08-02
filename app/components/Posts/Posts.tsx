@@ -14,14 +14,14 @@ export default function Posts() {
     fetchPosts();
   }, []);
   return (
-    //! should improve image optimization
-    <div className="w-1/3 flex flex-col items-center justify-center gap-[50px]">
+    <div className="w-[25%] flex flex-col items-center justify-center gap-[50px]">
       {posts && posts.length > 0 ? (
         posts?.map((el, key) => (
           <SinglePost
             author={el.author}
             comments={el.comments}
             content={el.content}
+            imageUrl={el.imageUrl}
             filePath={el.filePath}
             likes={el.likes}
             key={key}

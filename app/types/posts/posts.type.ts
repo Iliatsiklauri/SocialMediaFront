@@ -5,6 +5,7 @@ export type post = {
   author: user;
   content: string;
   filePath: string;
+  imageUrl: string;
   comments: string[];
   likes: string[];
 };

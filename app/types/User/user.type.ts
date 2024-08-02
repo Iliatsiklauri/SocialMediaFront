@@ -4,5 +4,9 @@ export type user = {
   lastname: string;
   email: string;
   posts: [];
+  profilePicture: {
+    imageUrl: string;
+    filePath: string;
+  };
   friends: user[];
 };

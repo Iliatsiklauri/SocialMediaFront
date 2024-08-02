@@ -3,7 +3,7 @@ module.exports = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'socialmediawsbucket.s3.eu-north-1.amazonaws.com',
+        hostname: 'dv8x7zx2zd79g.cloudfront.net',
         port: '',
         pathname: '/upload/**',
       },

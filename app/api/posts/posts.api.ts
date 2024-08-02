@@ -12,6 +12,5 @@ export async function getPostsApi() {
     },
   });
   const posts = await res.json();
-  console.log(posts);
   return posts;
 }
