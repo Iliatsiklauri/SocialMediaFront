@@ -8,6 +8,8 @@ export type ProviderType = {
   loading: boolean;
   setSuccess: React.Dispatch<React.SetStateAction<boolean>>;
   success: boolean;
+  setBackground: React.Dispatch<React.SetStateAction<boolean>>;
+  background: boolean;
 };
 export const GlobalProvider = createContext<ProviderType | null>(null);
 

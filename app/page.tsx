@@ -5,11 +5,11 @@ import Posts from './components/Posts/Posts';
 
 export default function Home() {
   return (
-    <div className="flex items-start justify-center relative py-[120px] bg-slate-300 h-screen overflow-y-auto">
-      <LeftBar />
+    <div className="flex items-start justify-center relative py-[120px] bg-[#fafafb] h-screen overflow-y-auto">
+      {/* <LeftBar /> */}
       <Header />
       <Posts />
-      <BgMark />
+      {/* <BgMark /> */}
     </div>
   );
 }

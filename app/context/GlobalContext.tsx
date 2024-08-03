@@ -5,12 +5,14 @@ import { user } from '../types/User/user.type';
 import { GlobalProvider } from './context';
 import { post } from '../types/posts/posts.type';
 import { getPostsApi } from '../api/posts/posts.api';
+import Blacked from '../components/BlackBackground/Blacked';
 
 export default function GlobalContext({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<user | null>(null);
   const [posts, setPosts] = useState<post[] | []>([]);
   const [loading, setLoading] = useState(true);
   const [success, setSuccess] = useState(false);
+  const [background, setBackground] = useState(false);
 
   useEffect(() => {
     async function getData() {
@@ -24,9 +26,20 @@ export default function GlobalContext({ children }: { children: ReactNode }) {
   }, [success]);
   return (
     <GlobalProvider.Provider
-      value={{ setSuccess, success, user, posts, loading }}
+      value={{
+        setSuccess,
+        success,
+        user,
+        posts,
+        loading,
+        background,
+        setBackground,
+      }}
     >
-      {children}
+      <div className="relative">
+        <Blacked children />
+        <div>{children}</div>
+      </div>
     </GlobalProvider.Provider>
   );
 }
