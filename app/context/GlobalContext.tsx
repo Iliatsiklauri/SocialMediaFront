@@ -6,6 +6,7 @@ import { GlobalProvider } from './context';
 import { post } from '../types/posts/posts.type';
 import { getPostsApi } from '../api/posts/posts.api';
 import Blacked from '../components/BlackBackground/Blacked';
+import CommentsModal from '../components/CommentsModal/CommentsModal';
 
 export default function GlobalContext({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<user | null>(null);
@@ -13,6 +14,7 @@ export default function GlobalContext({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
   const [success, setSuccess] = useState(false);
   const [background, setBackground] = useState(false);
+  const [modal, setModal] = useState<'comment' | ''>('');
 
   useEffect(() => {
     async function getData() {
@@ -34,10 +36,12 @@ export default function GlobalContext({ children }: { children: ReactNode }) {
         loading,
         background,
         setBackground,
+        modal,
+        setModal,
       }}
     >
       <div className="relative">
-        <Blacked children />
+        <Blacked>{modal === 'comment' && <CommentsModal />}</Blacked>
         <div>{children}</div>
       </div>
     </GlobalProvider.Provider>

@@ -1,5 +1,10 @@
+import Header from '@/app/components/Header/Header';
 import React from 'react';
 
 export default function page({ params }: { params: { id: string } }) {
-  return <div>{params.id}</div>;
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 }

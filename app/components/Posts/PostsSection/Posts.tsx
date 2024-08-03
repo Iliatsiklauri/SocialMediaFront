@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import SinglePost from './SinglePost/SinglePost';
+import SinglePost from '../SinglePost/SinglePost';
 import { useGlobalContext } from '@/app/context/context';
 
 export default function Posts() {

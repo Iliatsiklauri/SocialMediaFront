@@ -10,6 +10,8 @@ export type ProviderType = {
   success: boolean;
   setBackground: React.Dispatch<React.SetStateAction<boolean>>;
   background: boolean;
+  setModal: React.Dispatch<React.SetStateAction<'' | 'comment'>>;
+  modal: '' | 'comment';
 };
 export const GlobalProvider = createContext<ProviderType | null>(null);
 

@@ -4,6 +4,7 @@ import { useGlobalContext } from '@/app/context/context';
 import { post } from '@/app/types/posts/posts.type';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
+import PostInteraction from '../PostInteraction/PostInteraction';
 
 export default function PostContentInfo({ post }: { post: post }) {
   const [isLiked, setLiked] = useState<any>();
@@ -16,41 +17,28 @@ export default function PostContentInfo({ post }: { post: post }) {
   }, []);
   const context = useGlobalContext();
   if (!context) return null;
-  const { user } = context;
+  const { user, setModal, setBackground } = context;
 
   async function handleLike() {
     setLiked(!isLiked);
     return await likePost(post._id);
   }
   return (
-    <div className="flex flex-col items-start justify-center w-full">
+    <div className="flex flex-col items-start justify-center w-full px-2">
       {post?.imageUrl !== 'No Image' && (
         <div className="relative w-full h-[350px] md:h-[500px] rounded-md overflow-hidden flex-shrink-0">
           <Image src={post?.imageUrl} alt="post image" fill />
         </div>
       )}
-      {post.content !== '' && <p className="px-3 pt-2">{post.content}</p>}
-      <div className="w-full h-[50px] flex items-center justify-start px-3 cursor-pointer">
-        {isLiked ? (
-          <Image
-            src={'/heart (1).png'}
-            alt="heart"
-            width={20}
-            height={20}
-            onClick={handleLike}
-            className="cursor-pointer"
-          />
-        ) : (
-          <Image
-            src={'/heart.png'}
-            alt="heart"
-            width={20}
-            height={20}
-            onClick={handleLike}
-            className="cursor-pointer"
-          />
-        )}
-      </div>
+      {post.content !== '' && <p className=" pt-2">{post.content}</p>}
+      <PostInteraction
+        handleLike={handleLike}
+        isLiked={isLiked}
+        post={post}
+        setModal={setModal}
+        setBackground={setBackground}
+      />
+      <p className="text-[14px]">liked by {post.likes.length}</p>
     </div>
   );
 }
