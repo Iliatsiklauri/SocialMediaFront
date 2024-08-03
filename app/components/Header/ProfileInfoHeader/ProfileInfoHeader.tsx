@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import ProfilePicture from '../ProfilePicture/ProfilePicture';
 import { useGlobalContext } from '@/app/context/context';
 import ProfileArrow from '@/app/assets/ProfileArrow/ProfileArrow';
+import ActionBox from '../ActionBox/ActionBox';
 
 export default function ProfileInfoHeader() {
   const [side, setSide] = useState(true);
@@ -10,8 +11,8 @@ export default function ProfileInfoHeader() {
   if (!context) return null;
   const { user, loading } = context;
   return (
-    <div className="flex items-center justify-center gap-3 relative">
-      <div className="w-[50px] h-[50px]">
+    <div className="flex items-center justify-end gap-3 relative  w-[180px]">
+      <div className="w-[50px] h-[50px] absolute left-0">
         <ProfilePicture />
       </div>
       <div
@@ -25,6 +26,7 @@ export default function ProfileInfoHeader() {
         </p>
         <ProfileArrow side={side} />
       </div>
+      <ActionBox side={side} setSide={setSide} />
     </div>
   );
 }
