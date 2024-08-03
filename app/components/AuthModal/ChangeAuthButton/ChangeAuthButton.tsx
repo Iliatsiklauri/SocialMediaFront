@@ -3,12 +3,12 @@ import React from 'react';
 
 export default function ChangeAuthButton({ auth, setAuth }: changeAuthButton) {
   return (
-    <div className="w-full h-[50px] flex absolute top-10 px-8">
+    <div className="w-full h-[44px] xl:h-[50px] flex absolute top-8 lg:top-10 px-6 xl:px-8">
       <div className="flex w-full h-full items-center justify-around relative bg-slate-200 rounded-2xl">
         <div
           className={`${
             auth ? 'text-white' : 'text-black'
-          } w-1/3 h-full flex items-center justify-center z-10 transition-all duration-200 cursor-pointer`}
+          } w-1/3 h-full flex items-center justify-center z-10 transition-all duration-200 cursor-pointer `}
           onClick={() => setAuth(true)}
         >
           Login

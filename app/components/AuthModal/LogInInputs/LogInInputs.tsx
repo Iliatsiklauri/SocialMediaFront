@@ -58,7 +58,7 @@ export default function LogInInputs({ auth, setAuth, email }: customSignUp) {
         <input
           type="email"
           id="Email"
-          className="Auth_Inputs  border-gray-300 border-[1px]"
+          className="Auth_Inputs border-gray-300 border-[1px] placeholder:text-[13px] text-[16px] lg:text-[14px]"
           placeholder="Example@Example.com"
           defaultValue={email ? email : ''}
           {...register('email')}
@@ -78,7 +78,7 @@ export default function LogInInputs({ auth, setAuth, email }: customSignUp) {
           type="password"
           id="Password"
           autoComplete="off"
-          className="Auth_Inputs  border-gray-300 border-[1px]"
+          className="Auth_Inputs  border-gray-300 border-[1px] placeholder:text-[13px] text-[16px] lg:text-[14px]"
           placeholder="**************"
           {...register('password')}
         />

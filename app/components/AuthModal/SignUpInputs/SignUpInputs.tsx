@@ -49,7 +49,7 @@ export default function SignUpInputs({
         <input
           type="email"
           id="Email"
-          className="Auth_Inputs  border-gray-300 border-[1px]"
+          className="Auth_Inputs  border-gray-300 border-[1px] placeholder:text-[13px] text-[16px] lg:text-[14px]"
           placeholder="Example@Example.com"
           {...register('email')}
         />
@@ -68,7 +68,7 @@ export default function SignUpInputs({
           type="password"
           id="Password"
           autoComplete="off"
-          className="Auth_Inputs  border-gray-300 border-[1px]"
+          className="Auth_Inputs  border-gray-300 border-[1px] placeholder:text-[13px] text-[16px] lg:text-[14px]"
           placeholder="**************"
           {...register('password')}
         />
@@ -84,7 +84,7 @@ export default function SignUpInputs({
           type="password"
           id="Confirm_password"
           autoComplete="off"
-          className="Auth_Inputs  border-gray-300 border-[1px] "
+          className="Auth_Inputs  border-gray-300 border-[1px] placeholder:text-[13px] text-[16px] lg:text-[14px] "
           placeholder="**************"
           {...register('confirm_password')}
         />
@@ -99,7 +99,7 @@ export default function SignUpInputs({
         <input
           type="text"
           id="name"
-          className="Auth_Inputs  border-gray-300 border-[1px]"
+          className="Auth_Inputs  border-gray-300 border-[1px] placeholder:text-[13px] text-[16px] lg:text-[14px]"
           placeholder="John"
           {...register('name')}
         />
@@ -114,7 +114,7 @@ export default function SignUpInputs({
         <input
           type="text"
           id="lastname"
-          className="Auth_Inputs border-gray-300 border-[1px]"
+          className="Auth_Inputs border-gray-300 border-[1px] placeholder:text-[13px] text-[16px] lg:text-[14px]"
           placeholder="Doe"
           {...register('lastname')}
         />

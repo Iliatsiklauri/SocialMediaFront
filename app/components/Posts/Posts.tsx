@@ -1,20 +1,17 @@
 'use client';
-import { getPostsApi } from '@/app/api/posts/posts.api';
-import { post } from '@/app/types/posts/posts.type';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import SinglePost from './SinglePost/SinglePost';
+import { useGlobalContext } from '@/app/context/context';
 
 export default function Posts() {
-  const [posts, setPosts] = useState<[] | post[]>([]);
-  useEffect(() => {
-    async function fetchPosts() {
-      const response = await getPostsApi();
-      setPosts(response);
-    }
-    fetchPosts();
-  }, []);
+  const context = useGlobalContext();
+  if (!context) return null;
+  const { posts, loading } = context;
+  if (loading) {
+    return <div className="spinner"></div>;
+  }
   return (
-    <div className="w-[25%] flex flex-col items-center justify-center gap-[50px]">
+    <div className="w-[360px] md:min-w-[400px] md:w-1/3 flex flex-col items-center justify-center gap-[50px] z-10">
       {posts && posts.length > 0 ? (
         posts?.map((el, key) => (
           <SinglePost

@@ -1,21 +1,14 @@
 'use client';
-
-import { getUserInfo } from '@/app/api/users/users.api';
-import { user } from '@/app/types/User/user.type';
+import { useGlobalContext } from '@/app/context/context';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 
 export default function ProfilePicture() {
-  const [user, setUser] = useState<user | null>(null);
-  useEffect(() => {
-    async function getUser() {
-      const user: user | null = await getUserInfo();
-      setUser(user);
-    }
-    getUser();
-  }, []);
+  const context = useGlobalContext();
+  if (!context) return null;
+  const { user } = context;
+
   return (
-    <div className="relative rounded-full w-[50px] h-[50px] overflow-hidden">
+    <div className="relative rounded-full w-full h-full overflow-hidden">
       {user?.profilePicture?.imageUrl &&
       user.profilePicture.imageUrl !== 'No Image' ? (
         <Image src={user.profilePicture.imageUrl} alt="Profile picture" fill />
