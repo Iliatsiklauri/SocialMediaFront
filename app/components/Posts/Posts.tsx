@@ -22,6 +22,8 @@ export default function Posts() {
             filePath={el.filePath}
             likes={el.likes}
             key={key}
+            createdAt={el.createdAt}
+            _id={el._id}
           />
         ))
       ) : (

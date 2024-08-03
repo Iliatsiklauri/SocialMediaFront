@@ -5,25 +5,27 @@ import { user } from '../types/User/user.type';
 import { GlobalProvider } from './context';
 import { post } from '../types/posts/posts.type';
 import { getPostsApi } from '../api/posts/posts.api';
-import { boolean } from 'yup';
 
 export default function GlobalContext({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<user | null>(null);
   const [posts, setPosts] = useState<post[] | []>([]);
   const [loading, setLoading] = useState(true);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     async function getData() {
-      const user: user | null = await getUserInfo();
+      const user = await getUserInfo();
       const posts = await getPostsApi();
-      setPosts(posts.reverse());
+      setPosts(posts);
       setUser(user);
       setLoading(false);
     }
     getData();
-  }, []);
+  }, [success]);
   return (
-    <GlobalProvider.Provider value={{ user, posts, loading }}>
+    <GlobalProvider.Provider
+      value={{ setSuccess, success, user, posts, loading }}
+    >
       {children}
     </GlobalProvider.Provider>
   );

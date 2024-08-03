@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import SubmitButton from '../SubmitButton/SubmitButton';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -10,6 +10,7 @@ import {
   loginType,
 } from '@/app/types/authentication/auth.types';
 import { logIn } from '@/app/api/auth/auth.api';
+import { GlobalProvider, useGlobalContext } from '@/app/context/context';
 
 export default function LogInInputs({ auth, setAuth, email }: customSignUp) {
   const [passError, setPassError] = useState<null | string>(null);
@@ -22,6 +23,9 @@ export default function LogInInputs({ auth, setAuth, email }: customSignUp) {
   } = useForm<loginType>({
     resolver: yupResolver(logInSchema),
   });
+  const context = useGlobalContext();
+  if (!context) return null;
+  const { setSuccess, success } = context;
 
   async function logInHandler(data: loginType) {
     const res = await logIn(data);
@@ -38,6 +42,7 @@ export default function LogInInputs({ auth, setAuth, email }: customSignUp) {
         return;
       }
     }
+    setSuccess(!success);
     setCookie('AccessToken', response.accessToken, {
       path: '/',
       maxAge: 3600,
