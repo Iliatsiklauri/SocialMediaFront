@@ -13,6 +13,7 @@ export default function GlobalContext({ children }: { children: ReactNode }) {
   const [posts, setPosts] = useState<post[] | []>([]);
   const [loading, setLoading] = useState(true);
   const [success, setSuccess] = useState(false);
+  const [fetchPosts, setFetchPosts] = useState(false);
   const [background, setBackground] = useState(false);
   const [modal, setModal] = useState<'comment' | ''>('');
 
@@ -26,6 +27,14 @@ export default function GlobalContext({ children }: { children: ReactNode }) {
     }
     getData();
   }, [success]);
+
+  useEffect(() => {
+    async function refreshPosts() {
+      const posts = await getPostsApi();
+      setPosts(posts);
+    }
+    refreshPosts();
+  }, [fetchPosts]);
   return (
     <GlobalProvider.Provider
       value={{
@@ -38,6 +47,8 @@ export default function GlobalContext({ children }: { children: ReactNode }) {
         setBackground,
         modal,
         setModal,
+        fetchPosts,
+        setFetchPosts,
       }}
     >
       <div className="relative">

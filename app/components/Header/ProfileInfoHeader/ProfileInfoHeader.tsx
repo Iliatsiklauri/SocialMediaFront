@@ -11,7 +11,7 @@ export default function ProfileInfoHeader() {
   if (!context) return null;
   const { user, loading } = context;
   return (
-    <div className="flex items-center justify-end gap-3 relative  w-[180px]">
+    <div className="flex items-center justify-end gap-3 relative w-[180px] pointer-events-auto">
       <div className="w-[50px] h-[50px] absolute left-0">
         <ProfilePicture />
       </div>

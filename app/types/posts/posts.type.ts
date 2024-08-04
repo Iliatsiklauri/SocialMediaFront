@@ -19,3 +19,12 @@ export type getPostsType = {
   posts: post[] | [];
   setPosts: React.Dispatch<React.SetStateAction<[] | post[]>>;
 };
+
+export type PostInteractionType = {
+  user: user | null;
+  post: post;
+  setModal: React.Dispatch<React.SetStateAction<'' | 'comment'>>;
+  setBackground: React.Dispatch<React.SetStateAction<boolean>>;
+  setFetchPosts: React.Dispatch<React.SetStateAction<boolean>>;
+  fetchPosts: boolean;
+};

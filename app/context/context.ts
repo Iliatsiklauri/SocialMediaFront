@@ -12,6 +12,8 @@ export type ProviderType = {
   background: boolean;
   setModal: React.Dispatch<React.SetStateAction<'' | 'comment'>>;
   modal: '' | 'comment';
+  setFetchPosts: React.Dispatch<React.SetStateAction<boolean>>;
+  fetchPosts: boolean;
 };
 export const GlobalProvider = createContext<ProviderType | null>(null);
 
