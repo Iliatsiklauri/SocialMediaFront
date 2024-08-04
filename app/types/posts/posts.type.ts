@@ -7,7 +7,7 @@ export type post = {
   content: string;
   filePath: string;
   imageUrl: string;
-  comments: string[];
+  comments: Comment[];
   likes: {
     _id: string;
     name: string;
@@ -21,10 +21,19 @@ export type getPostsType = {
 };
 
 export type PostInteractionType = {
+  setPostForComment: React.Dispatch<React.SetStateAction<post | null>>;
   user: user | null;
   post: post;
   setModal: React.Dispatch<React.SetStateAction<'' | 'comment'>>;
   setBackground: React.Dispatch<React.SetStateAction<boolean>>;
   setFetchPosts: React.Dispatch<React.SetStateAction<boolean>>;
   fetchPosts: boolean;
+};
+
+export type Comment = {
+  id: string;
+  author: user;
+  content: string;
+  likes: string;
+  postId: string;
 };

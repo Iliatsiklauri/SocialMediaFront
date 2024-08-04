@@ -13,7 +13,7 @@ export default function PostUserInfo({ post }: { post: post }) {
         href={`/profile/${post.author._id}`}
       >
         <div className="w-[30px] h-[30px]">
-          <ProfilePicture />
+          <ProfilePicture imageUrl={post.author.profilePicture.imageUrl} />
         </div>
         <p className="pt-1.5 hover:underline">
           {post.author.name} {post.author.lastname}

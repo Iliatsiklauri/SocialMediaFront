@@ -10,10 +10,10 @@ export default function PostInteraction({
   fetchPosts,
   setFetchPosts,
   user,
+  setPostForComment,
 }: PostInteractionType) {
   const [isLiked, setLiked] = useState<boolean>(false);
   useEffect(() => {
-    console.log('clling');
     if (post.likes.some((el) => el._id === user?._id)) {
       setLiked(true);
     } else {
@@ -22,6 +22,7 @@ export default function PostInteraction({
   }, []);
 
   const handleComment = () => {
+    setPostForComment(post);
     setModal('comment');
     setBackground(true);
   };

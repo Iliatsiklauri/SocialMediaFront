@@ -1,10 +1,13 @@
 import { useGlobalContext } from '@/app/context/context';
+import { post } from '@/app/types/posts/posts.type';
 import React, { ReactNode } from 'react';
 
 export default function Blacked({
   children,
+  setPostForComment,
 }: {
   children: ReactNode | undefined;
+  setPostForComment: React.Dispatch<React.SetStateAction<post | null>>;
 }) {
   const context = useGlobalContext();
   if (!context) return null;
@@ -17,6 +20,7 @@ export default function Blacked({
             className="w-full h-full z-40 absolute top-0 left-0 right-0 bottom-0 bg-black opacity-30"
             onClick={() => {
               setBackground(!background);
+              setPostForComment(null);
               setModal('');
             }}
           ></div>

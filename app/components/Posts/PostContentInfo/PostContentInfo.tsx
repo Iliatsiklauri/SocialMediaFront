@@ -8,7 +8,14 @@ import PostInteraction from '../PostInteraction/PostInteraction';
 export default function PostContentInfo({ post }: { post: post }) {
   const context = useGlobalContext();
   if (!context) return null;
-  const { user, setModal, setBackground, setFetchPosts, fetchPosts } = context;
+  const {
+    user,
+    setModal,
+    setBackground,
+    setFetchPosts,
+    fetchPosts,
+    setPostForComment,
+  } = context;
   return (
     <div className="flex flex-col items-start justify-center w-full px-2">
       {post?.imageUrl !== 'No Image' && (
@@ -24,6 +31,7 @@ export default function PostContentInfo({ post }: { post: post }) {
         setBackground={setBackground}
         fetchPosts={fetchPosts}
         setFetchPosts={setFetchPosts}
+        setPostForComment={setPostForComment}
       />
       <p className="text-[14px]">liked by {post?.likes.length}</p>
     </div>
