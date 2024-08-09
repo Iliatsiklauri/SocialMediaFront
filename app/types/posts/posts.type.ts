@@ -37,3 +37,8 @@ export type Comment = {
   likes: string;
   postId: string;
 };
+
+export type createPost = {
+  content?: string;
+  file?: File;
+};

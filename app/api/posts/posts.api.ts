@@ -1,3 +1,4 @@
+import { createPost } from '@/app/types/posts/posts.type';
 import { getCookie } from 'cookies-next';
 
 export async function getPostsApi() {
@@ -28,4 +29,8 @@ export async function likePost(postId: string) {
   });
   const liked = await res.json();
   return liked.like;
+}
+
+export async function uploadPost(createPost: createPost) {
+  console.log(createPost);
 }

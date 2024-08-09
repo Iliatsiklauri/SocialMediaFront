@@ -45,8 +45,8 @@ export default function PostInteraction({
       <Image
         src={'/chat.png'}
         alt="chat"
-        width={18}
-        height={18}
+        width={20}
+        height={22}
         className="cursor-pointer"
         onClick={handleComment}
       />
