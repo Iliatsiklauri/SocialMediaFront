@@ -1,3 +1,5 @@
+const { StrictMode } = require('react');
+
 module.exports = {
   reactStrictMode: false,
   images: {

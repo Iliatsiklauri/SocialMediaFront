@@ -3,6 +3,7 @@ import ProfilePicture from '../../Header/ProfilePicture/ProfilePicture';
 import { post } from '@/app/types/posts/posts.type';
 import { formatDate } from '@/app/utils/auth.utils';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function PostUserInfo({ post }: { post: post }) {
   const date = formatDate(post.createdAt);
@@ -18,8 +19,15 @@ export default function PostUserInfo({ post }: { post: post }) {
         <p className="pt-1.5 hover:underline">
           {post.author.name} {post.author.lastname}
         </p>
+        <p className="text-[10px] opacity-50 mt-2">{date}</p>
       </Link>
-      <p className="text-[12px] opacity-50 mt-2">{date}</p>
+      <Image
+        src={'/more.png'}
+        width={20}
+        height={20}
+        alt="more"
+        className="cursor-pointer"
+      />
     </div>
   );
 }

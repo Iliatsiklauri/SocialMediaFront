@@ -1,36 +1,60 @@
-import { Comment, post } from '@/app/types/posts/posts.type';
-import React from 'react';
-import ProfilePicture from '../../Header/ProfilePicture/ProfilePicture';
+import { post } from '@/app/types/posts/posts.type';
+import React, { useState } from 'react';
+import SingleComment from '../SingleComment/SingleComment';
+import { postComment } from '@/app/api/posts/posts.api';
+import { useGlobalContext } from '@/app/context/context';
 
 export default function CommentsModal({ post }: { post: post | null }) {
-  console.log(post?.comments);
+  const [content, setContent] = useState<string>('');
+  const context = useGlobalContext();
+  if (!context) return null;
+  const { setFetchPosts, fetchPosts, user } = context;
+
+  const handleComment = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const res = await postComment(post?._id, content);
+    console.log(res);
+    post?.comments.push({
+      content,
+      author: user,
+    } as any);
+    setContent('');
+    setFetchPosts(!fetchPosts);
+  };
   return (
-    <div className="w-[400px] py-20 text-black bg-white rounded-xl">
+    <form
+      className="w-[400px] pt-4 pb-2 text-black bg-[#36393B] rounded-xl px-2"
+      onSubmit={handleComment}
+    >
       {post?.comments && post?.comments?.length > 0 ? (
-        <div>
-          {post.comments.map((comment, key: number) => (
-            <div
-              key={key}
-              className="w-full py-5 border-black border-2 flex items-start justify-center flex-col"
-            >
-              <div className="w-full flex items-center justify-start gap-2">
-                <div className="relative w-[30px] h-[30px]">
-                  <ProfilePicture
-                    imageUrl={comment.author.profilePicture.imageUrl}
-                  />
-                </div>
-                <p>
-                  {comment.author.name}
-                  {comment.author.lastname}
-                </p>
-              </div>
-              <div className="w-full ">{comment.content}</div>
-            </div>
-          ))}
+        <div className="flex items-start flex-col justify-center w-full gap-4">
+          <div className="gap-2 flex flex-col items-center justify-center w-full">
+            {post.comments.map((comment, key: number) => (
+              <SingleComment
+                comment={comment}
+                comments={post.comments}
+                key={key}
+              />
+            ))}
+          </div>
+          <input
+            type="text"
+            className="w-full h-8 border-black bg-white rounded-lg mt-2 focus:outline-none text-[14px] px-3"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
         </div>
       ) : (
-        <div>bad</div>
+        <div className="flex flex-col items-start justify-center gap-4">
+          <p>Be First to comment</p>
+          <input
+            type="text"
+            className="w-full h-8 border-black bg-white rounded-lg mt-2 focus:outline-none text-[14px] px-3"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+        </div>
       )}
-    </div>
+    </form>
   );
 }

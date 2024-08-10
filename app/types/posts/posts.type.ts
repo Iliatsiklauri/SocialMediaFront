@@ -31,7 +31,7 @@ export type PostInteractionType = {
 };
 
 export type Comment = {
-  id: string;
+  _id: string;
   author: user;
   content: string;
   likes: string;
