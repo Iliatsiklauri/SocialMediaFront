@@ -1,6 +1,4 @@
-import TrashIcon from '@/app/assets/ProfileArrow/TrashIcon';
 import { createPost } from '@/app/types/posts/posts.type';
-import { Elsie_Swash_Caps } from 'next/font/google';
 import Image from 'next/image';
 import React from 'react';
 
@@ -12,7 +10,7 @@ export default function ShowSelectedPic({
   setPostDto: React.Dispatch<React.SetStateAction<createPost | null>>;
 }) {
   return (
-    <div className={` flex absolute right-2 top-2 `}>
+    <div className={` flex absolute right-2 top-2`}>
       {postDTO?.file && (
         <div className="relative w-14 h-14">
           <div

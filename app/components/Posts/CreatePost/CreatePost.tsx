@@ -53,9 +53,9 @@ export default function CreatePost({ user }: { user: user | null }) {
     setPostDto(null);
   };
   return (
-    <form className="w-full min-h-[240px] bg-white p-6 flex flex-col items-center justify-center gap-6 relative overflow-hidden">
-      <div className="py-6 w-full flex items-center justify-start gap-6">
-        <div className="w-[68px] h-[68px] flex-shrink-0">
+    <form className="w-full min-h-[180px] md:min-h-[240px] bg-white px-3 md:p-6 flex flex-col items-center justify-center md:gap-6 relative overflow-hidden">
+      <div className="py-6 w-full flex items-center justify-start gap-3 lg:gap-6">
+        <div className="w-[50px] h-[50px] md:w-[68px] md:h-[68px] flex-shrink-0">
           <ProfilePicture />
         </div>
         <PostCreateText
@@ -64,7 +64,7 @@ export default function CreatePost({ user }: { user: user | null }) {
           user={user}
         />
         <div
-          className="h-[20px] w-[30px] cursor-pointer relative mr-10"
+          className="h-[20px] w-[30px] cursor-pointer relative md:mr-10"
           onClick={() => fileInputRef.current?.click()}
         >
           <Image fill src="/gallery.png" alt="choose photo" />
@@ -79,7 +79,7 @@ export default function CreatePost({ user }: { user: user | null }) {
           accept="image/*"
         />
       </div>
-      <div className="h-[1px] w-full bg-black opacity-10"></div>
+      <div className="h-[1px] w-full bg-black opacity-10 hidden md:block"></div>
       <CreateButton handleSubmit={handleSubmit} postDTO={postDTO} />
     </form>
   );

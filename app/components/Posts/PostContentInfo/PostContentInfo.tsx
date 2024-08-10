@@ -23,7 +23,15 @@ export default function PostContentInfo({ post }: { post: post }) {
           <Image src={post?.imageUrl} alt="post image" fill />
         </div>
       )}
-      {post.content !== '' && <p className=" pt-2">{post.content}</p>}
+      {post.content !== '' && (
+        <p
+          className={` text-[14px] md:text-[16px] ${
+            post?.imageUrl !== 'No Image' ? 'pt-2 md:pt-4' : ''
+          } leading-4 md:leading-5 md:tracking-normal tracking-normal `}
+        >
+          {post.content}
+        </p>
+      )}
       <PostInteraction
         user={user}
         post={post}

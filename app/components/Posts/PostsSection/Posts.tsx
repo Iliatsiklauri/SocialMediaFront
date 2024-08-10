@@ -13,9 +13,9 @@ export default function Posts() {
     return <div className="spinner"></div>;
   }
   return (
-    <div className="w-[360px] md:w-[600px] flex flex-col items-center justify-center gap-[50px] z-10">
+    <div className="w-[360px] md:w-[600px] flex flex-col items-center justify-center gap-[30px] md:gap-[50px] z-10">
       <CreatePost user={user} />
-      <div className="w-full flex flex-col items-center justify-center gap-[50px]">
+      <div className="w-full flex flex-col items-center justify-center gap-[30px] md:gap-[50px]">
         {posts && posts.length > 0 ? (
           posts?.map((el, key) => <SinglePost post={el} />)
         ) : (

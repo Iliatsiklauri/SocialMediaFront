@@ -11,8 +11,8 @@ export default function ProfileInfoHeader() {
   if (!context) return null;
   const { user, loading } = context;
   return (
-    <div className="flex items-center justify-end gap-3 relative w-[180px] pointer-events-auto">
-      <div className="w-[50px] h-[50px] absolute left-0">
+    <div className="flex items-center justify-end gap-3 relative w-[130px] md:w-[180px] pointer-events-auto">
+      <div className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] absolute left-0">
         <ProfilePicture />
       </div>
       <div
@@ -21,7 +21,9 @@ export default function ProfileInfoHeader() {
           setSide(!side);
         }}
       >
-        <p className={`${loading ? 'opacity-0' : ''}`}>
+        <p
+          className={`${loading ? 'opacity-0' : ''} text-[14px] lg:text-[16px]`}
+        >
           {loading ? 'user user' : `${user?.name} ${user?.lastname}`}
         </p>
         <ProfileArrow side={side} />
