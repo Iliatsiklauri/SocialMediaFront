@@ -2,7 +2,7 @@
 import { useGlobalContext } from '@/app/context/context';
 import { post } from '@/app/types/posts/posts.type';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PostInteraction from '../PostInteraction/PostInteraction';
 
 export default function PostContentInfo({ post }: { post: post }) {
@@ -19,7 +19,7 @@ export default function PostContentInfo({ post }: { post: post }) {
   return (
     <div className="flex flex-col items-start justify-center w-full px-2">
       {post?.imageUrl !== 'No Image' && (
-        <div className="relative w-full h-[350px] md:h-[500px] rounded-md overflow-hidden flex-shrink-0">
+        <div className="relative w-full aspect-square rounded-md overflow-hidden flex-shrink-0">
           <Image src={post?.imageUrl} alt="post image" fill />
         </div>
       )}
@@ -33,7 +33,16 @@ export default function PostContentInfo({ post }: { post: post }) {
         setFetchPosts={setFetchPosts}
         setPostForComment={setPostForComment}
       />
-      <p className="text-[14px]">liked by {post?.likes.length}</p>
+      <div className="flex items-center justify-center gap-1 mt-[-10px]">
+        <p className="text-[12px]">{post.likes.length !== 0 && 'liked By'}</p>
+        {post.likes.length > 0 && (
+          <p className="text-[11px]">
+            {post.likes.length === 1
+              ? `${post.likes[0].name} ${post.likes[0].lastname}`
+              : `${post.likes[0].name} ${post.likes[0].lastname} and others`}
+          </p>
+        )}
+      </div>
     </div>
   );
 }

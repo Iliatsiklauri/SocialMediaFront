@@ -17,19 +17,7 @@ export default function Posts() {
       <CreatePost user={user} />
       <div className="w-full flex flex-col items-center justify-center gap-[50px]">
         {posts && posts.length > 0 ? (
-          posts?.map((el, key) => (
-            <SinglePost
-              author={el.author}
-              comments={el.comments}
-              content={el.content}
-              imageUrl={el.imageUrl}
-              filePath={el.filePath}
-              likes={el.likes}
-              key={key}
-              createdAt={el.createdAt}
-              _id={el._id}
-            />
-          ))
+          posts?.map((el, key) => <SinglePost post={el} />)
         ) : (
           <p>no posts</p>
         )}

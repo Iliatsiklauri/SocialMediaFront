@@ -10,6 +10,7 @@ export type post = {
   comments: Comment[];
   likes: {
     _id: string;
+    lastname: string;
     name: string;
   }[];
   createdAt: string;
