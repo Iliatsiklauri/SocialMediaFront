@@ -19,8 +19,14 @@ export default function PostContentInfo({ post }: { post: post }) {
   return (
     <div className="flex flex-col items-start justify-center w-full px-2">
       {post?.imageUrl !== 'No Image' && (
-        <div className="relative w-full aspect-square rounded-md overflow-hidden flex-shrink-0">
-          <Image src={post?.imageUrl} alt="post image" fill />
+        <div className="relative w-full rounded-md overflow-hidden flex-shrink-0">
+          <Image
+            src={post?.imageUrl}
+            alt="post image"
+            layout="responsive"
+            width={16}
+            height={9}
+          />
         </div>
       )}
       {post.content !== '' && (

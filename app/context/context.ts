@@ -10,8 +10,8 @@ export type ProviderType = {
   success: boolean;
   setBackground: React.Dispatch<React.SetStateAction<boolean>>;
   background: boolean;
-  setModal: React.Dispatch<React.SetStateAction<'' | 'comment'>>;
-  modal: '' | 'comment';
+  setModal: React.Dispatch<React.SetStateAction<'' | 'comment' | 'search'>>;
+  modal: '' | 'comment' | 'search';
   setFetchPosts: React.Dispatch<React.SetStateAction<boolean>>;
   fetchPosts: boolean;
   setPostForComment: React.Dispatch<React.SetStateAction<post | null>>;

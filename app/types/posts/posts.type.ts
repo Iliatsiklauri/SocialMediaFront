@@ -25,7 +25,7 @@ export type PostInteractionType = {
   setPostForComment: React.Dispatch<React.SetStateAction<post | null>>;
   user: user | null;
   post: post;
-  setModal: React.Dispatch<React.SetStateAction<'' | 'comment'>>;
+  setModal: React.Dispatch<React.SetStateAction<'' | 'comment' | 'search'>>;
   setBackground: React.Dispatch<React.SetStateAction<boolean>>;
   setFetchPosts: React.Dispatch<React.SetStateAction<boolean>>;
   fetchPosts: boolean;

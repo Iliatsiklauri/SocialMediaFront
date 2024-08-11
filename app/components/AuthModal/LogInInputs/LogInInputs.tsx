@@ -11,10 +11,12 @@ import {
 } from '@/app/types/authentication/auth.types';
 import { logIn } from '@/app/api/auth/auth.api';
 import { GlobalProvider, useGlobalContext } from '@/app/context/context';
+import Image from 'next/image';
 
 export default function LogInInputs({ auth, setAuth, email }: customSignUp) {
   const [passError, setPassError] = useState<null | string>(null);
   const [emailError, setEmailError] = useState<null | string>(null);
+  const [visible, setVisible] = useState(false);
   const router = useRouter();
   const {
     register,
@@ -79,14 +81,24 @@ export default function LogInInputs({ auth, setAuth, email }: customSignUp) {
         <label htmlFor="Password">
           Password <span className="text-red-400">*</span>
         </label>
-        <input
-          type="password"
-          id="Password"
-          autoComplete="off"
-          className="Auth_Inputs  border-gray-300 border-[1px] placeholder:text-[13px] text-[16px] lg:text-[14px]"
-          placeholder="**************"
-          {...register('password')}
-        />
+        <div className="relative">
+          <input
+            type={visible ? 'text' : 'password'}
+            id="Password"
+            autoComplete="off"
+            className="Auth_Inputs  border-gray-300 border-[1px] placeholder:text-[13px] text-[16px] lg:text-[14px]"
+            placeholder="**************"
+            {...register('password')}
+          />
+          <Image
+            width={16}
+            height={20}
+            alt="eye"
+            src={visible ? '/view.png' : '/hide.png'}
+            onClick={() => setVisible(!visible)}
+            className="absolute right-4 top-4 cursor-pointer"
+          />
+        </div>
         <p className="absolute text-red-400 text-[12px] right-0 bottom-[-17px]">
           {passError ? null : errors.password?.message}
         </p>

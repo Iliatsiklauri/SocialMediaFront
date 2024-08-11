@@ -11,13 +11,15 @@ export default function Blacked({
 }) {
   const context = useGlobalContext();
   if (!context) return null;
-  const { background, setBackground, setModal } = context;
+  const { background, setBackground, setModal, modal } = context;
   return (
-    <div className="h-full w-full ">
+    <div className="h-full w-full">
       {background ? (
-        <div className="absolute top-0 w-full h-full flex items-center justify-center">
+        <div
+          className={`absolute w-full h-full flex items-center justify-center`}
+        >
           <div
-            className="w-full h-full z-40 absolute top-0 left-0 right-0 bottom-0 bg-black opacity-30"
+            className={`w-full h-full absolute left-0 right-0 z-20 bottom-0 bg-black opacity-30`}
             onClick={() => {
               setBackground(!background);
               setPostForComment(null);

@@ -15,7 +15,7 @@ export default function GlobalContext({ children }: { children: ReactNode }) {
   const [success, setSuccess] = useState(false);
   const [fetchPosts, setFetchPosts] = useState(false);
   const [background, setBackground] = useState(false);
-  const [modal, setModal] = useState<'comment' | ''>('');
+  const [modal, setModal] = useState<'comment' | 'search' | ''>('');
   const [postForComment, setPostForComment] = useState<post | null>(null);
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function GlobalContext({ children }: { children: ReactNode }) {
         <Blacked setPostForComment={setPostForComment}>
           {modal === 'comment' && <CommentsModal post={postForComment} />}
         </Blacked>
-        <div>{children}</div>
+        <div className="">{children}</div>
       </div>
     </GlobalProvider.Provider>
   );
