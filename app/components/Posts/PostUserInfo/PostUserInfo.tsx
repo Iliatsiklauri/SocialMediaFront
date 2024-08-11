@@ -5,7 +5,6 @@ import { formatDate } from '@/app/utils/auth.utils';
 import Link from 'next/link';
 import Image from 'next/image';
 import PostInfoModal from '../PostInfoModal/PostInfoModal';
-import { useGlobalContext } from '@/app/context/context';
 
 export default function PostUserInfo({ post }: { post: post }) {
   const [infoModal, setInfoModal] = useState(false);
@@ -16,7 +15,7 @@ export default function PostUserInfo({ post }: { post: post }) {
         className="flex items-center justify-center gap-3 cursor-pointer"
         href={`/profile/${post.author._id}`}
       >
-        <div className="w-[30px] h-[30px]">
+        <div className="w-[40px] h-[40px]">
           <ProfilePicture imageUrl={post.author.profilePicture.imageUrl} />
         </div>
         <p className="pt-1.5 hover:underline">

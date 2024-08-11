@@ -55,7 +55,7 @@ export default function CreatePost({ user }: { user: user | null }) {
   return (
     <form className="w-full min-h-[180px] md:min-h-[240px] bg-white px-3 md:p-6 flex flex-col items-center justify-center md:gap-6 relative overflow-hidden">
       <div className="py-6 w-full flex items-center justify-start gap-3 lg:gap-6">
-        <div className="w-[50px] h-[50px] md:w-[68px] md:h-[68px] flex-shrink-0">
+        <div className="w-[50px] h-[50px] md:w-[55px] md:h-[55px] flex-shrink-0">
           <ProfilePicture />
         </div>
         <PostCreateText

@@ -1,6 +1,6 @@
 'use client';
 import React, { ReactNode, useEffect, useState } from 'react';
-import { getUserInfo } from '../api/users/users.api';
+import { getUserInfo, getUsers } from '../api/users/users.api';
 import { user } from '../types/User/user.type';
 import { GlobalProvider } from './context';
 import { post } from '../types/posts/posts.type';
@@ -11,17 +11,21 @@ import CommentsModal from '../components/CommentsModal/Comments/CommentsModal';
 export default function GlobalContext({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<user | null>(null);
   const [posts, setPosts] = useState<post[] | []>([]);
+  const [users, setUsers] = useState<user[] | []>([]);
   const [loading, setLoading] = useState(true);
   const [success, setSuccess] = useState(false);
   const [fetchPosts, setFetchPosts] = useState(false);
   const [background, setBackground] = useState(false);
   const [modal, setModal] = useState<'comment' | 'search' | ''>('');
   const [postForComment, setPostForComment] = useState<post | null>(null);
+  const [friendsBox, setFriendsBox] = useState(false);
 
   useEffect(() => {
     async function getData() {
       const user = await getUserInfo();
       const posts = await getPostsApi();
+      const usersArr = await getUsers();
+      setUsers(usersArr);
       setPosts(posts);
       setUser(user);
       setLoading(false);
@@ -39,6 +43,10 @@ export default function GlobalContext({ children }: { children: ReactNode }) {
   return (
     <GlobalProvider.Provider
       value={{
+        setUsers,
+        users,
+        friendsBox,
+        setFriendsBox,
         setSuccess,
         success,
         user,

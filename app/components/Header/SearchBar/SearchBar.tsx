@@ -1,17 +1,9 @@
 'use client';
-import { getUsers } from '@/app/api/users/users.api';
 import { useGlobalContext } from '@/app/context/context';
 import Image from 'next/image';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 export default function SearchBar() {
-  useEffect(() => {
-    async function getData() {
-      const users = await getUsers();
-      console.log(users);
-    }
-    getData();
-  });
   const context = useGlobalContext();
   if (!context) return null;
   const { background, setBackground, setModal } = context;
@@ -27,10 +19,6 @@ export default function SearchBar() {
         type="text"
         className="w-full h-[40px] rounded-xl right-1/2  z-10 border-2 px-3"
         placeholder="Search for people"
-        onClick={() => {
-          setBackground(true);
-          setModal('search');
-        }}
       />
     </div>
   );

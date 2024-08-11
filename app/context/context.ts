@@ -16,6 +16,10 @@ export type ProviderType = {
   fetchPosts: boolean;
   setPostForComment: React.Dispatch<React.SetStateAction<post | null>>;
   postForComment: post | null;
+  friendsBox: boolean;
+  setFriendsBox: React.Dispatch<React.SetStateAction<boolean>>;
+  users: user[] | [];
+  setUsers: React.Dispatch<React.SetStateAction<user[] | []>>;
 };
 export const GlobalProvider = createContext<ProviderType | null>(null);
 
