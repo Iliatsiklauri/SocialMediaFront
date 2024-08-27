@@ -14,11 +14,11 @@ export default function Box() {
       className={`fixed h-full w-[250px] left-0 top-[80px] pointer-events-none bg-white`}
       animate={{ x: !friendsBox ? -250 : 0 }}
       initial={{ x: -250 }}
-      transition={{ type: 'tween' }}
+      transition={{ type: 'tween', duration: 0.2 }}
     >
       <PeopleButton friendsBox={friendsBox} setFriendsBox={setFriendsBox} />
       <div className="w-full z-50 h-full flex items-start justify-start gap-5 flex-col p-3">
-        {users.map((el, key) => (
+        {users?.map((el, key) => (
           <UserBox user={el} key={key} />
         ))}
       </div>

@@ -8,6 +8,7 @@ export default function Posts() {
   const context = useGlobalContext();
   if (!context) return null;
   const { posts, loading, user } = context;
+  console.log(user?.friends);
   if (loading) {
     return <div className="spinner"></div>;
   }
@@ -18,7 +19,7 @@ export default function Posts() {
         {posts && posts.length > 0 ? (
           posts?.map((el, key) => <SinglePost post={el} key={key} />)
         ) : (
-          <p>no posts</p>
+          <div className="spinner"></div>
         )}
       </div>
     </div>
